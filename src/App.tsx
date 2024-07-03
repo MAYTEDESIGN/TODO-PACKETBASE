@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect, useState } from 'react';
+// import './style.css';
+import TareaForm from './components/TareaForm';
+import TareaLista from './components/TareaLista';
+import { ContextoProvider } from './components/Contexto';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextoProvider>
+      <div className="contenedor-principal">
+        <h1>Lista de Tareas: Mayte</h1>
+        <TareaForm />
+        <div className="listas">
+          <div className="lista-1">
+            <h3>Tarea Creada</h3>
+            <TareaLista estado="creada" />
+          </div>
+          <div className="lista-2">
+            <h3>Tarea Iniciada</h3>
+            <TareaLista estado="iniciada" />
+          </div>
+          <div className="lista-3">
+            <h3>Tarea completada</h3>
+            <TareaLista estado="completada" />
+          </div>
+        </div>
+      </div>
+    </ContextoProvider>
   );
-}
+};
 
 export default App;
